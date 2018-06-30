@@ -1,12 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-
 
 const ReviewToolbar = (props) => (
-  <div>
-  
-  </div>
+  <div></div>
 );
 
 export default ReviewToolbar;

@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:8081'
+  phases:
+    - duration: 60
+      arrivalRate: 1
+      name: "warm up the app"
+    - duration: 240
+      arrivalRate: 1
+      rampTo: 10
+      name: "ramp to max load"
+    - duration: 360
+      arrivalRate: 10
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/restaurant/{{$randomNumber(1,1000)}}/reviews"
+      count: 100

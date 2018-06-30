@@ -56,19 +56,19 @@ const oneStarReviews = (data) => {
 }
 
 module.exports = {
-  overallRating : overallRating,
-  foodRating : foodRating,
-  serviceRating : serviceRating,
-  ambienceRating : ambienceRating,
-  valueRating : valueRating,
-  noise : noise,
-  noiseLevel : noiseLevel,
-  recommended : recommended,
-  fiveStarReviews : fiveStarReviews,
-  fourStarReviews : fourStarReviews,
-  threeStarReviews : threeStarReviews,
-  twoStarReviews : twoStarReviews,
-  oneStarReviews : oneStarReviews
+  overallRating: overallRating,
+  foodRating: foodRating,
+  serviceRating: serviceRating,
+  ambienceRating: ambienceRating,
+  valueRating: valueRating,
+  noise: noise,
+  noiseLevel: noiseLevel,
+  recommended: recommended,
+  fiveStarReviews: fiveStarReviews,
+  fourStarReviews: fourStarReviews,
+  threeStarReviews: threeStarReviews,
+  twoStarReviews: twoStarReviews,
+  oneStarReviews: oneStarReviews,
 };
 
 const overview = module.exports;
