@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    depends_on:
+      - 'database'
+      - 'redis'
+    ports:
+      - '3000:8081'
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=database
+      - POSTGRES_USER=postgres
+  database:
+    image: postgres:latest
+    volume:
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'

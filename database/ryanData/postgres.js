@@ -1,16 +1,15 @@
 const { Client } = require('pg');
 
 const client = new Client({
-  user: process.env.USER,
-  host: 'localhost',
-  database: 'reviewsdatabase',
-  password: 'null',
+  user: 'postgres',
+  host: process.env.POSTGRES_HOST || 'localhost',
+  database: process.env.POSTGRES_DB || 'reviewsdatabase',
   port: 5432,
 });
 
 client.connect((err) => {
   if (err) {
-    console.error('connection error', err.stack);
+    console.error(`connection error the user is ${client.user}`, err.stack);
   } else {
     console.log('connected to postgres database');
   }
@@ -41,7 +40,7 @@ const getAllReviews = (restaurantId, callback) => {
     WHERE restaurants.id = ${restaurantId};
   `, (err, result) => {
     if (err) throw err;
-    callback(null, result);
+    callback(null, JSON.stringify(result));
     // console.log(res);
     // client.end();
   });
@@ -102,8 +101,8 @@ const insertCategories = (reviewId, categories, response) => {
   });
 };
 
-const deleteReview = (restaurantId, callback) => {
-  client.query(`delete from reviews where id = ${restaurantId}`, (err, results) => {
+const deleteReview = (reviewId, callback) => {
+  client.query(`delete from reviews where id = ${reviewId}`, (err, results) => {
     if (err) throw err;
     callback(null, results);
   });
