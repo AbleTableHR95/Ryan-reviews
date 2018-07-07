@@ -34,21 +34,22 @@ class Overview extends React.Component {
   displayAllReviews(props) {
     axios.get(`/restaurant/${this.props.restaurantId}/reviews`)
       .then((response) => {
-        console.log('THE RESPONSE IS ', response);
+        // console.log('THE RESPONSE IS ', (JSON.parse(response.data)));
+        const reviews = response.data.rows;
         this.setState({
-          totalReviews: response.data.rows.length,
-          overallRating: overview.overallRating(response.data.rows),
-          foodRating: overview.foodRating(response.data.rows),
-          serviceRating: overview.serviceRating(response.data.rows),
-          ambienceRating: overview.ambienceRating(response.data.rows),
-          valueRating: overview.valueRating(response.data.rows),
-          noiseLevel: overview.noiseLevel(overview.noise(response.data.rows)),
-          recommended: overview.recommended(response.data.rows),
-          fiveStarReviews: overview.fiveStarReviews(response.data.rows),
-          fourStarReviews: overview.fourStarReviews(response.data.rows),
-          threeStarReviews: overview.threeStarReviews(response.data.rows),
-          twoStarReviews: overview.twoStarReviews(response.data.rows),
-          oneStarReviews: overview.oneStarReviews(response.data.rows)
+          totalReviews: reviews.length,
+          overallRating: overview.overallRating(reviews),
+          foodRating: overview.foodRating(reviews),
+          serviceRating: overview.serviceRating(reviews),
+          ambienceRating: overview.ambienceRating(reviews),
+          valueRating: overview.valueRating(reviews),
+          noiseLevel: overview.noiseLevel(overview.noise(reviews)),
+          recommended: overview.recommended(reviews),
+          fiveStarReviews: overview.fiveStarReviews(reviews),
+          fourStarReviews: overview.fourStarReviews(reviews),
+          threeStarReviews: overview.threeStarReviews(reviews),
+          twoStarReviews: overview.twoStarReviews(reviews),
+          oneStarReviews: overview.oneStarReviews(reviews)
         });
       })
       .catch((error) => {
