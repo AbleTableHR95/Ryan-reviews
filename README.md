@@ -1,6 +1,6 @@
-# Project Name
+# AbleTable
 
-> Project description
+> Inherited legacy code for restaurant reservations web application. Built upon this by dramatically improving load times and throughput through improving database schema/queries, implementing redis cache, and horizontally scaling microservice. 
 
 ## Related Projects
 
